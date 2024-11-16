@@ -3,97 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costa Rica Cost Calculator</title>
+    <title>Costa Rica Trip Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="page-wrapper">
         <header>
-            <h1>Costa Rica Group Cost Calculator</h1>
+            <h1>Costa Rica Trip Calculator</h1>
         </header>
-
+        
         <div class="content-container">
             <div class="info-section">
-                <h2>Costa Rica Cost Calculator</h2>
-                <p>Use this calculator to estimate costs per person based on our group size. The calculator will show you how the total cost per person changes as the group size varies.</p>
-                <div class="cost-notes">
+                <h2>Plan Our Costa Rica Adventure</h2>
+                <p>Use this calculator to estimate costs for our group trip to Manuel Antonio, Costa Rica. Prices include accommodations, chef services, transportation, and activities. Some costs are shared among the group, while others are per person.</p>
+            </div>
+
+            <div class="calculator-section">
+                <!-- Accommodation Selection -->
+                <div class="input-group">
+                    <h3>1. Select Accommodation</h3>
+                    <div class="select-wrapper">
+                        <select id="accommodation" onchange="updateCosts()">
+                            <option value="brisas">Casa de las Brisas ($10,650/week)</option>
+                            <option value="fantastica">Casa Fantastica ($14,700/week)</option>
+                            <option value="saltwater">Saltwater Haven ($14,700/week)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Group Size Selection -->
+                <div class="input-group">
+                    <h3>2. Group Details</h3>
+                    <div class="number-input">
+                        <label for="adultCount">Number of Adults:</label>
+                        <input type="number" id="adultCount" min="8" max="26" value="8" onchange="updateCosts()">
+                    </div>
+                    <div class="number-input">
+                        <label for="childCount">Children (6-12):</label>
+                        <input type="number" id="childCount" min="0" value="0" onchange="updateCosts()">
+                    </div>
+                    <div class="number-input">
+                        <label for="youngChildCount">Children (5 and under):</label>
+                        <input type="number" id="youngChildCount" min="0" value="0" onchange="updateCosts()">
+                    </div>
+                </div>
+
+                <!-- Meal Plan Selection -->
+                <div class="input-group">
+                    <h3>3. Meal Plan</h3>
+                    <div class="select-wrapper">
+                        <select id="mealPlan" onchange="updateCosts()">
+                            <option value="basic">Basic - Local Food & Soft Drinks ($300/adult/week)</option>
+                            <option value="premium">Premium - Including Alcohol ($375/adult/week)</option>
+                            <option value="none">No Meal Plan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Transportation Options -->
+                <div class="input-group">
+                    <h3>4. Transportation</h3>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="airportTransfer" onchange="updateCosts()">
+                        <label for="airportTransfer">Airport Transfer (Round Trip)</label>
+                    </div>
+                    <div class="number-input">
+                        <label for="vanDays">Local Van Service (Full Days):</label>
+                        <input type="number" id="vanDays" min="0" value="0" onchange="updateCosts()">
+                    </div>
+                </div>
+
+                <!-- Activities Selection -->
+                <div class="input-group">
+                    <h3>5. Activities</h3>
+                    <div class="activities-grid">
+                        <div class="activity-item">
+                            <input type="checkbox" id="rafting" onchange="updateCosts()">
+                            <label for="rafting">White Water Rafting ($120/person)</label>
+                        </div>
+                        <div class="activity-item">
+                            <input type="checkbox" id="zipline" onchange="updateCosts()">
+                            <label for="zipline">Ziplining ($95/person)</label>
+                        </div>
+                        <div class="activity-item">
+                            <input type="checkbox" id="catamaran" onchange="updateCosts()">
+                            <label for="catamaran">Catamaran Tour ($85/adult)</label>
+                        </div>
+                        <div class="activity-item">
+                            <input type="checkbox" id="surf" onchange="updateCosts()">
+                            <label for="surf">Surf Lessons ($90/person)</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-			
-			<!-- Add this right after your input-section div and before the results-container -->
-		<div class="slider-section">
-			<div class="slider-container">
-				<label for="groupSizeSlider">Compare Group Sizes: <span id="currentSize">8</span> people</label>
-				<input 
-					type="range" 
-					id="groupSizeSlider" 
-					min="8" 
-					max="26" 
-					value="8" 
-					class="slider">
-				<div class="slider-marks">
-					<span>8</span>
-					<span>26</span>
-				</div>
-			</div>
-			<div class="cost-display">
-				<div class="cost-card">
-					<h3>Cost Per Person</h3>
-					<p class="cost-amount" id="perPersonCost">$0</p>
-				</div>
-				<div class="total-cost-card">
-					<h3>Total Group Cost</h3>
-					<p class="cost-amount" id="totalGroupCost">$0</p>
-				</div>
-			</div>
-		</div>
-        <div class="content-container">
-            <div class="input-section">
-                <div class="input-wrapper">
-                    <label for="houseCost">House Cost (Total): </label>
-                    <input type="number" id="houseCost" value="12000" placeholder="Enter total cost">
-                </div>
-                
-                <div class="input-wrapper">
-                    <label for="chefCost">Chef Cost (Total): </label>
-                    <input type="number" id="chefCost" value="5000" placeholder="Enter total cost">
-                </div>
-                
-                <div class="input-wrapper">
-                    <label for="transportCost">Transport Cost (Total): </label>
-                    <input type="number" id="transportCost" value="500" placeholder="Enter total cost">
-                </div>
-                
-                <div class="input-wrapper">
-                    <label for="activityCost">Activity Cost (Per Person): </label>
-                    <input type="number" id="activityCost" value="300" placeholder="Enter per-person cost">
-                </div>
-                
-                <div class="button-container">
-                    <button class="calculate-btn" onclick="calculateCosts()">Calculate Costs</button>
+
+            <!-- Cost Summary -->
+            <div class="cost-summary">
+                <h3>Cost Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span>Accommodation Total:</span>
+                        <span id="accommodationCost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Meal Plan Total:</span>
+                        <span id="mealPlanCost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Transportation Total:</span>
+                        <span id="transportationCost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Activities Total:</span>
+                        <span id="activitiesCost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax (13%):</span>
+                        <span id="taxCost">$0</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total Group Cost:</span>
+                        <span id="totalCost">$0</span>
+                    </div>
+                    <div class="summary-item per-person">
+                        <span>Cost Per Adult:</span>
+                        <span id="perPersonCost">$0</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="results-container">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Group Size</th>
-                                <th>House Cost Per Person</th>
-                                <th>Chef Cost Per Person</th>
-                                <th>Transport Cost Per Person</th>
-                                <th>Activity Cost Per Person</th>
-                                <th>Total Cost Per Person</th>
-                                <th>Total Group Cost</th>
-                            </tr>
-                        </thead>
-                        <tbody id="resultsTable">
-                            <!-- Results will be dynamically inserted here -->
-                        </tbody>
-                    </table>
-                </div>
+
+            <div class="notes-section">
+                <h3>Important Notes</h3>
+                <ul>
+                    <li>Prices shown are for 7 nights</li>
+                    <li>Chef services (2 meals/day) are included with accommodation</li>
+                    <li>Additional guests beyond 20 are $325/person/week</li>
+                    <li>A damage protection fee of $100-$120 will be added</li>
+                    <li>Most activities require deposits ($10-$45/person)</li>
+                    <li>Cancellations under 48 hours incur full charges</li>
+                </ul>
             </div>
         </div>
     </div>
