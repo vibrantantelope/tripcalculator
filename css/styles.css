@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     font-family: 'Raleway', 'Helvetica Neue', sans-serif;
     background: url('../images/costarica.png');
@@ -18,13 +19,14 @@ body {
     padding: 20px;
 }
 
+/* Header Styles */
 header {
     background: rgba(26, 71, 42, 0.9);
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
@@ -36,18 +38,18 @@ header h1 {
     letter-spacing: 1px;
 }
 
-header h1:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s ease;
-}
-
+/* Container Styles */
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.info-section {
+/* Section Styles */
+.info-section,
+.calculator-section,
+.cost-summary,
+.notes-section {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     padding: 25px;
@@ -55,39 +57,34 @@ header h1:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.info-section h2 {
-    color: #2c4a3d;
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-/* Calculator Section Styling */
-.calculator-section {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
+/* Input Groups */
 .input-group {
     margin-bottom: 30px;
     padding: 20px;
     background: rgba(75, 145, 125, 0.1);
     border-radius: 8px;
+    border: 1px solid rgba(75, 145, 125, 0.2);
 }
 
 .input-group h3 {
     color: #2c4a3d;
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid rgba(75, 145, 125, 0.3);
+    padding-bottom: 10px;
 }
 
-/* Select Styling */
+.input-group h4 {
+    color: #2c4a3d;
+    margin: 15px 0 10px;
+    font-size: 1.1rem;
+}
+
+/* Form Controls */
 .select-wrapper {
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 select {
@@ -100,16 +97,26 @@ select {
     font-size: 16px;
     color: #2c4a3d;
     cursor: pointer;
+    appearance: none;
 }
 
-/* Number Input Styling */
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2c4a3d;
+    pointer-events: none;
+}
+
 .number-input {
     margin-bottom: 15px;
 }
 
 .number-input label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #2c4a3d;
     font-weight: 500;
 }
@@ -120,47 +127,53 @@ input[type="number"] {
     border: 2px solid rgba(75, 145, 125, 0.3);
     border-radius: 6px;
     font-size: 16px;
-    background: white;
+    background-color: white;
 }
 
-/* Checkbox Styling */
+/* Checkbox Groups */
 .checkbox-group {
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.checkbox-group label {
-    display: inline-block;
-    margin-left: 8px;
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }
 
 /* Activities Grid */
 .activities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.activity-category {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(75, 145, 125, 0.2);
 }
 
 .activity-item {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-/* Cost Summary Styling */
-.cost-summary {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.activity-item:hover {
+    background: rgba(75, 145, 125, 0.1);
 }
 
-.cost-summary h3 {
-    color: #2c4a3d;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
+/* Cost Summary */
 .summary-grid {
     display: grid;
     gap: 15px;
@@ -169,7 +182,8 @@ input[type="number"] {
 .summary-item {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    align-items: center;
+    padding: 12px 15px;
     background: rgba(75, 145, 125, 0.1);
     border-radius: 6px;
     font-size: 1.1rem;
@@ -179,24 +193,13 @@ input[type="number"] {
 .summary-item.per-person {
     background: rgba(75, 145, 125, 0.2);
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: 1.3rem;
+    padding: 15px;
+    margin-top: 10px;
+    border: 2px solid rgba(75, 145, 125, 0.3);
 }
 
 /* Notes Section */
-.notes-section {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.notes-section h3 {
-    color: #2c4a3d;
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
 .notes-section ul {
     list-style-type: none;
     padding-left: 0;
@@ -205,23 +208,118 @@ input[type="number"] {
 
 .notes-section li {
     margin-bottom: 10px;
-    padding-left: 20px;
+    padding-left: 25px;
     position: relative;
 }
 
 .notes-section li:before {
     content: "•";
     position: absolute;
+    left: 8px;
+    color: #4b917d;
+    font-size: 1.2rem;
+}
+/* Details Button */
+.details-btn {
+    background: rgba(75, 145, 125, 0.1);
+    border: 1px solid rgba(75, 145, 125, 0.3);
+    padding: 8px 15px;
+    border-radius: 6px;
+    color: #2c4a3d;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.details-btn:hover {
+    background: rgba(75, 145, 125, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Details Content */
+.details-content {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    border: 1px solid rgba(75, 145, 125, 0.2);
+}
+
+.details-content.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Details Grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+/* Details Cards */
+.details-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.details-card h4 {
+    color: #2c4a3d;
+    margin: 0 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(75, 145, 125, 0.2);
+}
+
+.details-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details-card li {
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.details-card li:before {
+    content: "•";
+    position: absolute;
     left: 0;
     color: #4b917d;
 }
 
-/* Input focus states */
-input:focus,
-select:focus {
+/* Activity Note */
+.activity-note {
+    margin-top: 15px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover Effects */
+select:hover,
+input[type="number"]:hover {
+    border-color: rgba(75, 145, 125, 0.5);
+}
+
+select:focus,
+input[type="number"]:focus {
     outline: none;
     border-color: rgba(75, 145, 125, 0.8);
-    box-shadow: 0 0 5px rgba(75, 145, 125, 0.2);
+    box-shadow: 0 0 0 2px rgba(75, 145, 125, 0.2);
 }
 
 /* Responsive Design */
@@ -243,12 +341,27 @@ select:focus {
     }
 
     .summary-item {
-        padding: 10px;
         font-size: 1rem;
     }
 
-    select,
-    input[type="number"] {
-        font-size: 14px;
+    .summary-item.total,
+    .summary-item.per-person {
+        font-size: 1.2rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: none;
+    }
+
+    .page-wrapper {
+        background: none;
+    }
+
+    .input-group,
+    .calculator-section {
+        break-inside: avoid;
     }
 }

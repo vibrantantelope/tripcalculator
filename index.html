@@ -3,96 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costa Rica Trip Calculator</title>
+    <title>Costa Rica Trip Cost Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="page-wrapper">
         <header>
-            <h1>Costa Rica Trip Calculator</h1>
+            <h1>Costa Rica Trip Cost Calculator</h1>
         </header>
         
         <div class="content-container">
             <div class="info-section">
                 <h2>Plan Our Costa Rica Adventure</h2>
-                <p>Use this calculator to estimate costs for our group trip to Manuel Antonio, Costa Rica. Prices include accommodations, chef services, transportation, and activities. Some costs are shared among the group, while others are per person.</p>
+                <p>Calculate the total cost for your group, including accommodations, meals, transportation, and activities. Adjust the options below to see how different choices affect the total cost.</p>
             </div>
 
+            <!-- Main Calculator Section -->
             <div class="calculator-section">
-                <!-- Accommodation Selection -->
+                <!-- 1. Accommodation Selection -->
                 <div class="input-group">
-                    <h3>1. Select Accommodation</h3>
+                    <h3>1. Accommodation</h3>
+					<div class="input-group">
+						<h3>1. Accommodation</h3>
+						<button class="details-btn" onclick="toggleDetails('accommodation-details')">See More Details ▼</button>
+						<div class="details-content" id="accommodation-details">
+							<div class="details-grid">
+								<div class="details-card">
+									<h4>Casa de las Brisas</h4>
+									<ul>
+										<li>Base Rate (6 BR/12 guests): $7,650/week</li>
+										<li>Full House (10 BR/20 guests): $10,650/week</li>
+										<li>Additional Bedrooms: $750/bedroom/week</li>
+										<li>Extra Guests: $325/person/week</li>
+										<li>Maximum Capacity: 26 guests</li>
+									</ul>
+								</div>
+								<div class="details-card">
+									<h4>Casa Fantastica / Saltwater Haven</h4>
+									<ul>
+										<li>Base Rate (6 BR/12 guests): $11,700/week</li>
+										<li>Full House (10 BR/20 guests): $14,700/week</li>
+										<li>Additional Bedrooms: $750/bedroom/week</li>
+										<li>Extra Guests: $325/person/week</li>
+										<li>Maximum Capacity: 26 guests</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
                     <div class="select-wrapper">
                         <select id="accommodation" onchange="updateCosts()">
-                            <option value="brisas">Casa de las Brisas ($10,650/week)</option>
-                            <option value="fantastica">Casa Fantastica ($14,700/week)</option>
-                            <option value="saltwater">Saltwater Haven ($14,700/week)</option>
+                            <option value="brisas_base">Casa de las Brisas (6 BR/12 guests) - $7,650/week</option>
+                            <option value="brisas_full">Casa de las Brisas (10 BR/20 guests) - $10,650/week</option>
+                            <option value="fantastica_base">Casa Fantastica (6 BR/12 guests) - $11,700/week</option>
+                            <option value="fantastica_full">Casa Fantastica (10 BR/20 guests) - $14,700/week</option>
+                            <option value="saltwater_base">Saltwater Haven (6 BR/12 guests) - $11,700/week</option>
+                            <option value="saltwater_full">Saltwater Haven (10 BR/20 guests) - $14,700/week</option>
                         </select>
+                    </div>
+
+                    <div class="number-input">
+                        <label for="extraBedrooms">Additional Bedrooms ($750/bedroom/week):</label>
+                        <input type="number" id="extraBedrooms" min="0" max="4" value="0" onchange="updateCosts()">
                     </div>
                 </div>
 
-                <!-- Group Size Selection -->
+                <!-- 2. Group Size -->
                 <div class="input-group">
                     <h3>2. Group Details</h3>
                     <div class="number-input">
-                        <label for="adultCount">Number of Adults:</label>
-                        <input type="number" id="adultCount" min="8" max="26" value="8" onchange="updateCosts()">
+                        <label for="adultCount">Adults:</label>
+                        <input type="number" id="adultCount" min="1" max="26" value="8" onchange="updateCosts()">
                     </div>
                     <div class="number-input">
-                        <label for="childCount">Children (6-12):</label>
+                        <label for="childCount">Children (6-12 years):</label>
                         <input type="number" id="childCount" min="0" value="0" onchange="updateCosts()">
                     </div>
                     <div class="number-input">
-                        <label for="youngChildCount">Children (5 and under):</label>
+                        <label for="youngChildCount">Young Children (5 and under):</label>
                         <input type="number" id="youngChildCount" min="0" value="0" onchange="updateCosts()">
                     </div>
                 </div>
 
-                <!-- Meal Plan Selection -->
+                <!-- 3. Meal Plan -->
                 <div class="input-group">
                     <h3>3. Meal Plan</h3>
+					<div class="input-group">
+						<h3>3. Meal Plan</h3>
+						<button class="details-btn" onclick="toggleDetails('meal-details')">See More Details ▼</button>
+						<div class="details-content" id="meal-details">
+							<div class="details-grid">
+								<div class="details-card">
+									<h4>Included Chef Services</h4>
+									<ul>
+										<li>Included with all listed properties</li>
+										<li>Two meals per day</li>
+										<li>Food costs not included</li>
+										<li>Customizable menu options</li>
+									</ul>
+								</div>
+								<div class="details-card">
+									<h4>Meal Plan Options</h4>
+									<ul>
+										<li>Basic Plan: $300/adult/week
+											<br>- Local food & soft drinks</li>
+										<li>Premium Plan: $375/adult/week
+											<br>- Includes beer, wine, and rum</li>
+										<li>Children (6-12): $150/week</li>
+										<li>Children under 5: Free</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
                     <div class="select-wrapper">
                         <select id="mealPlan" onchange="updateCosts()">
+                            <option value="none">No Meal Plan (Food Cost Not Included)</option>
                             <option value="basic">Basic - Local Food & Soft Drinks ($300/adult/week)</option>
                             <option value="premium">Premium - Including Alcohol ($375/adult/week)</option>
-                            <option value="none">No Meal Plan</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Transportation Options -->
+                <!-- 4. Transportation -->
                 <div class="input-group">
                     <h3>4. Transportation</h3>
+					<div class="input-group">
+						<h3>4. Transportation</h3>
+						<button class="details-btn" onclick="toggleDetails('transport-details')">See More Details ▼</button>
+						<div class="details-content" id="transport-details">
+							<div class="details-grid">
+								<div class="details-card">
+									<h4>Airport Transfers (One Way)</h4>
+									<ul>
+										<li>1-5 people: $215</li>
+										<li>6 people: $225</li>
+										<li>7 people: $235</li>
+										<li>8 people: $245</li>
+										<li>9 people: $260</li>
+										<li>10-17 people: $400</li>
+										<li>18+ people: Two vehicles required</li>
+										<li>Hotel pickup: +$45</li>
+									</ul>
+								</div>
+								<div class="details-card">
+									<h4>Local Van Service</h4>
+									<ul>
+										<li>Full Day (10 hours):
+											<br>- Large van: $400
+											<br>- Small van: $300</li>
+										<li>Half Day (5 hours):
+											<br>- Large van: $225
+											<br>- Small van: $175</li>
+										<li>Hourly: $40/hour (3-hour minimum)</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <!-- Airport Transfer -->
                     <div class="checkbox-group">
                         <input type="checkbox" id="airportTransfer" onchange="updateCosts()">
                         <label for="airportTransfer">Airport Transfer (Round Trip)</label>
                     </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="hotelPickup" onchange="updateCosts()">
+                        <label for="hotelPickup">Hotel Pickup ($45 additional)</label>
+                    </div>
+                    
+                    <!-- Local Transportation -->
+                    <h4>Local Van Service:</h4>
                     <div class="number-input">
-                        <label for="vanDays">Local Van Service (Full Days):</label>
-                        <input type="number" id="vanDays" min="0" value="0" onchange="updateCosts()">
+                        <label for="fullDayLarge">Full Days - Large Van ($400/day):</label>
+                        <input type="number" id="fullDayLarge" min="0" value="0" onchange="updateCosts()">
+                    </div>
+                    <div class="number-input">
+                        <label for="halfDayLarge">Half Days - Large Van ($225/day):</label>
+                        <input type="number" id="halfDayLarge" min="0" value="0" onchange="updateCosts()">
+                    </div>
+                    <div class="number-input">
+                        <label for="hourlyService">Hourly Service ($40/hour, min 3 hours):</label>
+                        <input type="number" id="hourlyService" min="0" value="0" onchange="updateCosts()">
                     </div>
                 </div>
 
-                <!-- Activities Selection -->
+                <!-- 5. Activities -->
                 <div class="input-group">
                     <h3>5. Activities</h3>
+					<div class="input-group">
+						<h3>5. Activities</h3>
+						<button class="details-btn" onclick="toggleDetails('activities-details')">See More Details ▼</button>
+						<div class="details-content" id="activities-details">
+							<div class="details-grid">
+								<div class="details-card">
+									<h4>Adventure Activities</h4>
+									<ul>
+										<li>White Water Rafting: $105-$125/person</li>
+										<li>Jungle Tubing: $110/person</li>
+										<li>Ziplining: $85-$105/person</li>
+										<li>ATV Tours:
+											<br>- Single: $110
+											<br>- Double: $140
+											<br>- With Ziplining: $170-$270</li>
+									</ul>
+								</div>
+								<div class="details-card">
+									<h4>Water Activities</h4>
+									<ul>
+										<li>Catamaran Tours:
+											<br>- Adults: $80-$89
+											<br>- Children (5-10): $55
+											<br>- Under 5: $10</li>
+										<li>Surf Lessons:
+											<br>- Standard: $90/person
+											<br>- No-Frills: $55/person</li>
+										<li>Paddleboarding: $69/person</li>
+									</ul>
+								</div>
+								<div class="details-card">
+									<h4>Special Experiences</h4>
+									<ul>
+										<li>Chocolate Workshop: $125/person</li>
+										<li>Jungle Yoga Tour: $125/person</li>
+										<li>Waterfall Tours:
+											<br>- Half Day: $100/person
+											<br>- Full Day: $130/person</li>
+										<li>Beach Concierge: $20/person</li>
+									</ul>
+								</div>
+							</div>
+							<p class="activity-note">* Most activities require deposits ($10-$45/person)</p>
+						</div>
+					</div>
                     <div class="activities-grid">
-                        <div class="activity-item">
-                            <input type="checkbox" id="rafting" onchange="updateCosts()">
-                            <label for="rafting">White Water Rafting ($120/person)</label>
+                        <!-- Adventure Activities -->
+                        <div class="activity-category">
+                            <h4>Adventure Activities</h4>
+                            <div class="activity-item">
+                                <input type="checkbox" id="rafting" onchange="updateCosts()">
+                                <label for="rafting">White Water Rafting ($115/person)</label>
+                            </div>
+                            <div class="activity-item">
+                                <input type="checkbox" id="tubing" onchange="updateCosts()">
+                                <label for="tubing">Jungle Tubing ($110/person)</label>
+                            </div>
+                            <div class="activity-item">
+                                <input type="checkbox" id="zipline" onchange="updateCosts()">
+                                <label for="zipline">Ziplining ($95/person)</label>
+                            </div>
                         </div>
-                        <div class="activity-item">
-                            <input type="checkbox" id="zipline" onchange="updateCosts()">
-                            <label for="zipline">Ziplining ($95/person)</label>
+
+                        <!-- Water Activities -->
+                        <div class="activity-category">
+                            <h4>Water Activities</h4>
+                            <div class="activity-item">
+                                <input type="checkbox" id="catamaran" onchange="updateCosts()">
+                                <label for="catamaran">Catamaran Tour ($85/adult)</label>
+                            </div>
+                            <div class="activity-item">
+                                <input type="checkbox" id="surf" onchange="updateCosts()">
+                                <label for="surf">Surf Lessons ($90/person)</label>
+                            </div>
+                            <div class="activity-item">
+                                <input type="checkbox" id="paddleboard" onchange="updateCosts()">
+                                <label for="paddleboard">Paddleboarding ($69/person)</label>
+                            </div>
                         </div>
-                        <div class="activity-item">
-                            <input type="checkbox" id="catamaran" onchange="updateCosts()">
-                            <label for="catamaran">Catamaran Tour ($85/adult)</label>
-                        </div>
-                        <div class="activity-item">
-                            <input type="checkbox" id="surf" onchange="updateCosts()">
-                            <label for="surf">Surf Lessons ($90/person)</label>
+
+                        <!-- Nature & Culture -->
+                        <div class="activity-category">
+                            <h4>Nature & Culture</h4>
+                            <div class="activity-item">
+                                <input type="checkbox" id="waterfall" onchange="updateCosts()">
+                                <label for="waterfall">Waterfall Tour ($100/person)</label>
+                            </div>
+                            <div class="activity-item">
+                                <input type="checkbox" id="horseback" onchange="updateCosts()">
+                                <label for="horseback">Horseback Riding ($75/person)</label>
+                            </div>
+                            <div class="activity-item">
+                                <input type="checkbox" id="chocolate" onchange="updateCosts()">
+                                <label for="chocolate">Chocolate Workshop ($125/person)</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,24 +296,36 @@
                 <h3>Cost Summary</h3>
                 <div class="summary-grid">
                     <div class="summary-item">
-                        <span>Accommodation Total:</span>
+                        <span>Accommodation:</span>
                         <span id="accommodationCost">$0</span>
                     </div>
                     <div class="summary-item">
-                        <span>Meal Plan Total:</span>
+                        <span>Extra Bedroom Cost:</span>
+                        <span id="bedroomCost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Extra Guest Cost:</span>
+                        <span id="extraGuestCost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Meal Plan:</span>
                         <span id="mealPlanCost">$0</span>
                     </div>
                     <div class="summary-item">
-                        <span>Transportation Total:</span>
+                        <span>Transportation:</span>
                         <span id="transportationCost">$0</span>
                     </div>
                     <div class="summary-item">
-                        <span>Activities Total:</span>
+                        <span>Activities:</span>
                         <span id="activitiesCost">$0</span>
                     </div>
                     <div class="summary-item">
                         <span>Tax (13%):</span>
                         <span id="taxCost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Damage Protection Fee:</span>
+                        <span id="damageFee">$100</span>
                     </div>
                     <div class="summary-item total">
                         <span>Total Group Cost:</span>
@@ -133,15 +338,16 @@
                 </div>
             </div>
 
+            <!-- Important Notes -->
             <div class="notes-section">
                 <h3>Important Notes</h3>
                 <ul>
-                    <li>Prices shown are for 7 nights</li>
-                    <li>Chef services (2 meals/day) are included with accommodation</li>
-                    <li>Additional guests beyond 20 are $325/person/week</li>
-                    <li>A damage protection fee of $100-$120 will be added</li>
+                    <li>All prices are for a 7-night stay</li>
+                    <li>Chef services for 2 meals/day are included with listed properties</li>
                     <li>Most activities require deposits ($10-$45/person)</li>
                     <li>Cancellations under 48 hours incur full charges</li>
+                    <li>October is low season - book 6-9 months in advance</li>
+                    <li>All prices are subject to change</li>
                 </ul>
             </div>
         </div>
