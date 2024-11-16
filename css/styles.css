@@ -1,0 +1,228 @@
+/* Background Setup */
+body {
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    background: url('../images/costarica.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #2c4a3d;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Container Overlay */
+.page-wrapper {
+    background-color: rgba(245, 241, 230, 0.85);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    background: rgba(26, 71, 42, 0.9);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the content */
+}
+
+header h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add subtle text shadow */
+    letter-spacing: 1px; /* Slightly increase letter spacing */
+}
+
+/* Optional: Add a nice hover effect */
+header h1:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Main Content Container */
+.content-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Container */
+.input-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(75, 145, 125, 0.3);
+}
+
+/* Label Styling */
+label {
+    font-size: 18px;
+    margin-right: 12px;
+    color: #4a3424;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Input Field Container */
+.input-wrapper {
+    background: white;
+    border-radius: 6px;
+    padding: 5px;
+    margin: 10px 0;
+    border: 2px solid rgba(139, 69, 19, 0.3);
+}
+
+input {
+    width: calc(100% - 24px);
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* Button Container */
+.button-container {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.calculate-btn {
+    background-color: rgba(192, 77, 49, 0.9);
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calculate-btn:hover {
+    background-color: rgba(162, 59, 33, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Results Container */
+.results-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Container */
+.table-container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Base Styling */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: transparent;
+    margin: 0 auto;
+}
+
+/* Table Header */
+th {
+    background-color: rgba(75, 145, 125, 0.9);
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(75, 145, 125, 0.2);
+}
+
+/* First header cell rounded corners */
+th:first-child {
+    border-top-left-radius: 8px;
+}
+
+/* Last header cell rounded corners */
+th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* Table Cells */
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+/* Alternating Row Colors */
+tr:nth-child(odd) td {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+tr:nth-child(even) td {
+    background-color: rgba(240, 240, 240, 0.95);
+}
+
+/* Hover Effect on Rows */
+tbody tr:hover td {
+    background-color: rgba(75, 145, 125, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Currency Columns - Using consistent font */
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6),
+td:nth-child(7) {
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+}
+
+/* Make the group size column bold */
+td:first-child {
+    font-weight: 600;
+}
+
+/* Last row styling (totals) */
+tr:last-child td {
+    font-weight: 600;
+    border-top: 2px solid rgba(75, 145, 125, 0.5);
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .table-container {
+        margin: 10px -15px;
+        border-radius: 0;
+        padding: 10px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px 4px;
+    }
+}

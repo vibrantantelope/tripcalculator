@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costa Rica Cost Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <h1>Costa Rica Group Cost Calculator</h1>
+        </header>
+
+        <div class="content-container">
+            <div class="info-section">
+                <h2>Costa Rica Cost Calculator</h2>
+                <p>Use this calculator to estimate costs per person based on our group size. The calculator will show you how the total cost per person changes as the group size varies.</p>
+                <div class="cost-notes">
+                </div>
+            </div>
+        <div class="content-container">
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <label for="houseCost">House Cost (Total): </label>
+                    <input type="number" id="houseCost" value="12000" placeholder="Enter total cost">
+                </div>
+                
+                <div class="input-wrapper">
+                    <label for="chefCost">Chef Cost (Total): </label>
+                    <input type="number" id="chefCost" value="5000" placeholder="Enter total cost">
+                </div>
+                
+                <div class="input-wrapper">
+                    <label for="transportCost">Transport Cost (Total): </label>
+                    <input type="number" id="transportCost" value="500" placeholder="Enter total cost">
+                </div>
+                
+                <div class="input-wrapper">
+                    <label for="activityCost">Activity Cost (Per Person): </label>
+                    <input type="number" id="activityCost" value="300" placeholder="Enter per-person cost">
+                </div>
+                
+                <div class="button-container">
+                    <button class="calculate-btn" onclick="calculateCosts()">Calculate Costs</button>
+                </div>
+            </div>
+            
+            <div class="results-container">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Group Size</th>
+                                <th>House Cost Per Person</th>
+                                <th>Chef Cost Per Person</th>
+                                <th>Transport Cost Per Person</th>
+                                <th>Activity Cost Per Person</th>
+                                <th>Total Cost Per Person</th>
+                                <th>Total Group Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTable">
+                            <!-- Results will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
