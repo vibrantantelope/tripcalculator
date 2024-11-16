@@ -209,6 +209,8 @@ tr:last-child td {
     font-weight: 600;
     border-top: 2px solid rgba(75, 145, 125, 0.5);
 }
+// Ad
+
 
 /* Responsive table */
 @media (max-width: 768px) {

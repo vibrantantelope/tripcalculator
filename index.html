@@ -20,6 +20,34 @@
                 <div class="cost-notes">
                 </div>
             </div>
+			
+			<!-- Add this right after your input-section div and before the results-container -->
+		<div class="slider-section">
+			<div class="slider-container">
+				<label for="groupSizeSlider">Compare Group Sizes: <span id="currentSize">8</span> people</label>
+				<input 
+					type="range" 
+					id="groupSizeSlider" 
+					min="8" 
+					max="26" 
+					value="8" 
+					class="slider">
+				<div class="slider-marks">
+					<span>8</span>
+					<span>26</span>
+				</div>
+			</div>
+			<div class="cost-display">
+				<div class="cost-card">
+					<h3>Cost Per Person</h3>
+					<p class="cost-amount" id="perPersonCost">$0</p>
+				</div>
+				<div class="total-cost-card">
+					<h3>Total Group Cost</h3>
+					<p class="cost-amount" id="totalGroupCost">$0</p>
+				</div>
+			</div>
+		</div>
         <div class="content-container">
             <div class="input-section">
                 <div class="input-wrapper">
